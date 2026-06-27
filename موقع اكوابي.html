@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أكوابي | AQUABE.JO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+:root {
+  --green: #153E2B;
+  --green-dark: #0d2a1e;
+  --green-light: #1e5a3e;
+  --gold: #C9A84C;
+  --gold-light: #e0c070;
+  --gold-pale: #f5ecd4;
+  --white: #ffffff;
+  --cream: #faf8f3;
+  --gray: #f0ece3;
+  --text-dark: #1a1a1a;
+  --text-mid: #555;
+  --text-light: #999;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 4px 24px rgba(21,62,43,0.10);
+  --shadow-lg: 0 8px 40px rgba(21,62,43,0.16);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family:'Tajawal',sans-serif; background:var(--cream); color:var(--text-dark); direction:rtl; }
+a { text-decoration:none; color:inherit; }
+button { font-family:'Tajawal',sans-serif; cursor:pointer; border:none; outline:none; }
+img { display:block; width:100%; height:100%; object-fit:cover; }
+
+/* ===== PAGE SYSTEM ===== */
+.page { display:none; min-height:100vh; }
+.page.active { display:block; }
+
+/* ===== TOP BAR ===== */
+.topbar {
+  background:var(--green);
+  color:#fff;
+  padding:9px 32px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:13px;
+  font-weight:500;
+}
+.topbar-social { display:flex; gap:12px; }
+.topbar-social a {
+  color:rgba(255,255,255,0.75);
+  font-size:17px;
+  transition:color .2s;
+}
+.topbar-social a:hover { color:var(--gold); }
+.topbar-center { flex:1; text-align:center; letter-spacing:.3px; }
+.topbar-center span { color:var(--gold); font-weight:700; }
+.topbar-lang {
+  background:transparent;
+  color:var(--gold);
+  border:1px solid var(--gold);
+  border-radius:6px;
+  padding:3px 12px;
+  font-size:12px;
+  font-weight:700;
+  transition:all .2s;
+}
+.topbar-lang:hover { background:var(--gold); color:var(--green); }
+
+/* ===== NAVBAR ===== */
+.navbar {
+  background:#fff;
+  padding:0 32px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:2.5px solid var(--green);
+  position:sticky;
+  top:0;
+  z-index:200;
+  height:64px;
+  box-shadow: 0 2px 12px rgba(21,62,43,0.07);
+}
+.nav-logo { display:flex; align-items:center; gap:10px; cursor:pointer; }
+.logo-icon {
+  width:46px; height:46px;
+  background:var(--green);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  border:2px solid var(--gold);
+}
+.logo-icon i { font-size:22px; color:var(--gold); }
+.logo-texts { line-height:1.1; }
+.logo-ar { font-size:18px; font-weight:900; color:var(--green); }
+.logo-en { font-size:10px; color:var(--gold); letter-spacing:1.5px; font-weight:700; }
+.nav-links { display:flex; gap:4px; align-items:center; }
+.nav-links a {
+  color:var(--green);
+  font-size:14px;
+  font-weight:700;
+  padding:8px 12px;
+  border-radius:8px;
+  transition:all .2s;
+  white-space:nowrap;
+}
+.nav-links a:hover { background:var(--gold-pale); color:var(--gold); }
+.nav-icons { display:flex; gap:6px; align-items:center; }
+.nav-icon-btn {
+  width:40px; height:40px;
+  border-radius:10px;
+  background:transparent;
+  border:1px solid transparent;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--green);
+  font-size:20px;
+  position:relative;
+  transition:all .2s;
+}
+.nav-icon-btn:hover { background:var(--gold-pale); border-color:var(--gold); }
+.cart-badge {
+  position:absolute; top:-4px; right:-4px;
+  background:var(--gold); color:var(--green);
+  border-radius:50%; width:18px; height:18px;
+  font-size:10px; font-weight:900;
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* ===== HERO ===== */
+.hero {
+  background:var(--green);
+  padding:56px 32px 48px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero-bg-pattern {
+  position:absolute; inset:0;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(201,168,76,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(201,168,76,0.06) 0%, transparent 40%);
+}
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(201,168,76,0.15);
+  border:1px solid rgba(201,168,76,0.4);
+  color:var(--gold);
+  padding:6px 20px;
+  border-radius:24px;
+  font-size:13px;
+  font-weight:600;
+  margin-bottom:18px;
+}
+.hero h1 {
+  font-size:38px; font-weight:900;
+  color:#fff;
+  margin-bottom:12px;
+  line-height:1.2;
+}
+.hero h1 span { color:var(--gold); }
+.hero p { font-size:15px; color:rgba(255,255,255,0.75); margin-bottom:32px; }
+.hero-imgs {
+  display:flex; gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.hero-img-card {
+  width:120px; height:150px;
+  border-radius:14px;
+  overflow:hidden;
+  border:2px solid rgba(201,168,76,0.3);
+  position:relative;
+}
+.hero-img-card img { width:100%; height:100%; object-fit:cover; }
+.hero-img-label {
+  position:absolute; bottom:0; left:0; right:0;
+  background:linear-gradient(transparent, rgba(21,62,43,0.9));
+  color:#fff;
+  font-size:11px; font-weight:700;
+  padding:18px 6px 6px;
+  text-align:center;
+}
+
+/* ===== SECTION ===== */
+.section { padding:36px 32px; }
+.section-header {
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:22px;
+}
+.section-title {
+  font-size:22px; font-weight:900; color:var(--green);
+  display:flex; align-items:center; gap:10px;
+}
+.section-title::before {
+  content:'';
+  width:5px; height:26px;
+  background:var(--gold);
+  border-radius:3px;
+  display:block;
+}
+.more-btn {
+  background:var(--green);
+  color:var(--gold);
+  padding:7px 20px;
+  border-radius:24px;
+  font-size:13px;
+  font-weight:700;
+  transition:all .2s;
+}
+.more-btn:hover { background:var(--gold); color:var(--green); }
+
+/* ===== PRODUCT GRID ===== */
+.products-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(175px, 1fr));
+  gap:16px;
+}
+.product-card {
+  background:#fff;
+  border-radius:var(--radius);
+  overflow:hidden;
+  border:1px solid #e8e3d8;
+  cursor:pointer;
+  transition:transform .25s, box-shadow .25s;
+}
+.product-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-lg); }
+.product-img {
+  width:100%; height:160px;
+  background:var(--gray);
+  position:relative;
+  overflow:hidden;
+}
+.product-img img { width:100%; height:100%; object-fit:cover; transition:transform .4s; }
+.product-card:hover .product-img img { transform:scale(1.06); }
+.product-tag {
+  position:absolute; top:10px; right:10px;
+  background:var(--gold);
+  color:var(--green);
+  font-size:10px; font-weight:900;
+  padding:3px 10px; border-radius:12px;
+}
+.product-tag.new { background:var(--green); color:var(--gold); }
+.product-info { padding:12px 14px; }
+.product-name { font-size:14px; font-weight:700; color:var(--text-dark); margin-bottom:6px; }
+.product-bottom { display:flex; align-items:center; justify-content:space-between; }
+.product-price { font-size:15px; font-weight:900; color:var(--gold); }
+.add-cart-btn {
+  width:30px; height:30px;
+  background:var(--green);
+  border-radius:8px;
+  display:flex; align-items:center; justify-content:center;
+  color:#fff;
+  font-size:16px;
+  transition:all .2s;
+}
+.add-cart-btn:hover { background:var(--gold); color:var(--green); }
+
+/* ===== DIVIDER ===== */
+.divider {
+  height:1px;
+  background:linear-gradient(to left, transparent, rgba(21,62,43,0.15), transparent);
+  margin:0 32px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background:var(--green-dark);
+  color:#fff;
+  padding:40px 32px 20px;
+}
+.footer-grid {
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:32px;
+  margin-bottom:32px;
+}
+.footer-logo-big { font-size:28px; font-weight:900; color:var(--gold); margin-bottom:4px; }
+.footer-logo-en { font-size:12px; letter-spacing:2px; color:rgba(255,255,255,0.5); margin-bottom:14px; }
+.footer-desc { font-size:13px; color:rgba(255,255,255,0.7); line-height:1.8; }
+.footer-col-title { font-size:15px; font-weight:800; color:var(--gold); margin-bottom:14px; }
+.footer-link-item {
+  display:flex; align-items:center; gap:10px;
+  padding:10px 14px;
+  background:rgba(255,255,255,0.05);
+  border-radius:10px;
+  border:1px solid rgba(201,168,76,0.15);
+  cursor:pointer;
+  transition:all .2s;
+  margin-bottom:8px;
+}
+.footer-link-item:hover { background:rgba(201,168,76,0.12); border-color:rgba(201,168,76,0.4); }
+.footer-link-item i { font-size:18px; color:var(--gold); }
+.footer-link-item span { font-size:13px; font-weight:600; }
+.footer-bottom {
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding-top:18px;
+  text-align:center;
+  font-size:12px;
+  color:rgba(255,255,255,0.4);
+}
+
+/* ===== GATEWAY PAGE (Grads/Biz/Posters) ===== */
+.gateway-hero {
+  background:var(--green);
+  padding:40px 32px;
+  text-align:center;
+}
+.gateway-hero h2 { font-size:32px; font-weight:900; color:#fff; margin-bottom:8px; }
+.gateway-hero p { font-size:15px; color:rgba(255,255,255,0.75); }
+.gateway-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+  gap:20px;
+  padding:36px 32px;
+}
+.gateway-card {
+  background:#fff;
+  border-radius:var(--radius);
+  overflow:hidden;
+  border:1px solid #e8e3d8;
+  cursor:pointer;
+  transition:transform .25s, box-shadow .25s;
+}
+.gateway-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); }
+.gateway-card-img {
+  height:180px;
+  overflow:hidden;
+  position:relative;
+}
+.gateway-card-img img { width:100%; height:100%; object-fit:cover; transition:transform .4s; }
+.gateway-card:hover .gateway-card-img img { transform:scale(1.06); }
+.gateway-card-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(transparent 40%, rgba(21,62,43,0.85));
+  display:flex; align-items:flex-end;
+  padding:14px;
+}
+.gateway-card-name { font-size:17px; font-weight:900; color:#fff; }
+.gateway-card-en { font-size:11px; color:var(--gold); font-weight:600; }
+.gateway-cta {
+  text-align:center;
+  padding:0 32px 36px;
+}
+.gateway-cta-btn {
+  background:var(--gold);
+  color:var(--green);
+  font-size:16px; font-weight:900;
+  padding:14px 40px;
+  border-radius:30px;
+  transition:all .2s;
+  display:inline-flex; align-items:center; gap:10px;
+}
+.gateway-cta-btn:hover { background:var(--green); color:var(--gold); box-shadow:var(--shadow); }
+
+/* ===== PRODUCTS PAGE ===== */
+.products-page-header {
+  background:var(--green);
+  padding:30px 32px;
+  display:flex; align-items:center; gap:16px;
+}
+.back-btn {
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.25);
+  color:#fff;
+  width:38px; height:38px;
+  border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px;
+  transition:all .2s;
+}
+.back-btn:hover { background:var(--gold); color:var(--green); border-color:var(--gold); }
+.products-page-header h2 { font-size:24px; font-weight:900; color:#fff; }
+.products-page-content { padding:28px 32px; }
+
+/* ===== PRODUCT DETAIL ===== */
+.detail-layout {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  padding:36px 32px;
+  max-width:1000px;
+  margin:0 auto;
+}
+.detail-gallery {}
+.detail-main-img {
+  width:100%; height:340px;
+  border-radius:var(--radius);
+  overflow:hidden;
+  border:1px solid #e8e3d8;
+  margin-bottom:12px;
+}
+.detail-thumbnails { display:flex; gap:10px; }
+.detail-thumb {
+  width:72px; height:72px;
+  border-radius:10px;
+  overflow:hidden;
+  border:2px solid transparent;
+  cursor:pointer;
+  transition:border-color .2s;
+}
+.detail-thumb.active { border-color:var(--gold); }
+.detail-thumb img { width:100%; height:100%; object-fit:cover; }
+.detail-info {}
+.detail-breadcrumb { font-size:12px; color:var(--text-light); margin-bottom:10px; }
+.detail-name { font-size:26px; font-weight:900; color:var(--green); margin-bottom:8px; }
+.detail-stars { display:flex; align-items:center; gap:6px; margin-bottom:12px; }
+.stars { color:var(--gold); font-size:16px; }
+.rating-text { font-size:13px; color:var(--text-mid); }
+.detail-price { font-size:32px; font-weight:900; color:var(--gold); margin-bottom:20px; }
+.detail-divider { height:1px; background:#e8e3d8; margin-bottom:20px; }
+.option-label { font-size:14px; font-weight:700; color:var(--green); margin-bottom:10px; }
+.color-options { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+.color-dot {
+  width:32px; height:32px;
+  border-radius:50%;
+  cursor:pointer;
+  border:3px solid transparent;
+  transition:border-color .2s;
+}
+.color-dot.active { border-color:var(--green); outline:2px solid var(--gold); outline-offset:2px; }
+.select-box {
+  width:100%;
+  padding:10px 14px;
+  border:1.5px solid #ddd;
+  border-radius:10px;
+  font-family:'Tajawal',sans-serif;
+  font-size:14px;
+  font-weight:600;
+  color:var(--text-dark);
+  background:#fff;
+  appearance:none;
+  margin-bottom:16px;
+  cursor:pointer;
+}
+.select-box:focus { border-color:var(--green); outline:none; }
+.detail-btns { display:flex; gap:10px; margin-bottom:24px; }
+.btn-primary {
+  flex:1;
+  background:var(--gold);
+  color:var(--green);
+  font-size:16px; font-weight:900;
+  padding:13px;
+  border-radius:12px;
+  transition:all .2s;
+}
+.btn-primary:hover { background:var(--green); color:var(--gold); }
+.btn-whatsapp {
+  background:#25D366;
+  color:#fff;
+  font-size:15px; font-weight:700;
+  padding:13px 18px;
+  border-radius:12px;
+  display:flex; align-items:center; gap:8px;
+  transition:all .2s;
+}
+.btn-whatsapp:hover { background:#1da851; }
+.how-it-works { margin-top:8px; }
+.how-it-works h4 { font-size:14px; font-weight:700; color:var(--text-mid); margin-bottom:12px; text-align:center; }
+.how-steps { display:flex; align-items:center; justify-content:center; gap:0; }
+.how-step { text-align:center; padding:0 10px; }
+.how-step i { font-size:22px; color:var(--green); display:block; margin-bottom:4px; }
+.how-step span { font-size:11px; color:var(--text-mid); font-weight:600; }
+.how-arrow { color:var(--gold); font-size:16px; }
+
+/* ===== CART PAGE ===== */
+.cart-layout {
+  display:grid;
+  grid-template-columns:1.5fr 1fr;
+  gap:24px;
+  padding:28px 32px;
+  align-items:start;
+}
+.cart-section-title { font-size:18px; font-weight:900; color:var(--green); margin-bottom:16px; border-bottom:2px solid var(--gold); padding-bottom:8px; }
+.cart-item {
+  background:#fff;
+  border-radius:var(--radius-sm);
+  border:1px solid #e8e3d8;
+  padding:14px;
+  display:flex;
+  gap:14px;
+  margin-bottom:12px;
+  transition:box-shadow .2s;
+}
+.cart-item:hover { box-shadow:var(--shadow); }
+.cart-item-img {
+  width:80px; height:80px;
+  border-radius:10px;
+  overflow:hidden;
+  flex-shrink:0;
+  background:var(--gray);
+}
+.cart-item-info { flex:1; }
+.cart-item-name { font-size:14px; font-weight:700; color:var(--text-dark); margin-bottom:4px; }
+.cart-item-details { font-size:12px; color:var(--text-mid); margin-bottom:8px; }
+.cart-item-bottom { display:flex; align-items:center; justify-content:space-between; }
+.cart-item-price { font-size:16px; font-weight:900; color:var(--gold); }
+.qty-ctrl { display:flex; align-items:center; gap:8px; }
+.qty-btn {
+  width:26px; height:26px;
+  background:var(--gray);
+  border-radius:6px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px; font-weight:700;
+  color:var(--green);
+  cursor:pointer;
+  transition:all .2s;
+}
+.qty-btn:hover { background:var(--green); color:#fff; }
+.qty-num { font-size:14px; font-weight:700; min-width:20px; text-align:center; }
+.remove-btn { color:#e74c3c; font-size:18px; cursor:pointer; padding:4px; }
+.order-summary {
+  background:#fff;
+  border-radius:var(--radius);
+  border:1px solid #e8e3d8;
+  padding:20px;
+  position:sticky;
+  top:80px;
+}
+.summary-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; font-size:14px; }
+.summary-row.total { font-weight:900; font-size:17px; color:var(--green); border-top:1px solid #e8e3d8; padding-top:14px; margin-top:6px; }
+.checkout-btn {
+  width:100%;
+  background:var(--gold);
+  color:var(--green);
+  font-size:16px; font-weight:900;
+  padding:14px;
+  border-radius:12px;
+  margin-top:16px;
+  transition:all .2s;
+}
+.checkout-btn:hover { background:var(--green); color:var(--gold); }
+.wishlist-section { margin-top:24px; }
+.wishlist-item {
+  background:#fff;
+  border-radius:var(--radius-sm);
+  border:1px solid #e8e3d8;
+  padding:12px;
+  display:flex;
+  gap:12px;
+  margin-bottom:10px;
+}
+.wishlist-item-img {
+  width:60px; height:60px;
+  border-radius:8px;
+  overflow:hidden;
+  background:var(--gray);
+  flex-shrink:0;
+}
+.wishlist-name { font-size:13px; font-weight:700; color:var(--text-dark); margin-bottom:4px; }
+.wishlist-price { font-size:13px; font-weight:700; color:var(--gold); }
+.move-to-cart {
+  margin-top:4px;
+  background:var(--green);
+  color:var(--gold);
+  font-size:11px; font-weight:700;
+  padding:4px 10px;
+  border-radius:8px;
+  transition:all .2s;
+}
+.move-to-cart:hover { background:var(--gold); color:var(--green); }
+
+/* ===== CHECKOUT PAGE ===== */
+.checkout-layout {
+  display:grid;
+  grid-template-columns:1.5fr 1fr;
+  gap:24px;
+  padding:28px 32px;
+  align-items:start;
+}
+.form-card {
+  background:#fff;
+  border-radius:var(--radius);
+  border:1px solid #e8e3d8;
+  padding:24px;
+  margin-bottom:16px;
+}
+.form-card-title { font-size:16px; font-weight:800; color:var(--green); margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.form-card-title i { color:var(--gold); font-size:20px; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
+.form-group { margin-bottom:12px; }
+.form-group label { font-size:13px; font-weight:700; color:var(--text-mid); display:block; margin-bottom:6px; }
+.form-input {
+  width:100%;
+  padding:10px 14px;
+  border:1.5px solid #ddd;
+  border-radius:10px;
+  font-family:'Tajawal',sans-serif;
+  font-size:14px;
+  color:var(--text-dark);
+  transition:border-color .2s;
+}
+.form-input:focus { outline:none; border-color:var(--green); }
+.product-options { background:var(--gray); border-radius:10px; padding:14px; margin-bottom:12px; }
+.product-option-row { display:flex; justify-content:space-between; font-size:13px; padding:4px 0; }
+.product-option-row span:first-child { color:var(--text-mid); }
+.product-option-row span:last-child { font-weight:700; color:var(--text-dark); }
+.place-order-btn {
+  width:100%;
+  background:var(--gold);
+  color:var(--green);
+  font-size:17px; font-weight:900;
+  padding:15px;
+  border-radius:14px;
+  transition:all .2s;
+  display:flex; align-items:center; justify-content:center; gap:10px;
+}
+.place-order-btn:hover { background:var(--green); color:var(--gold); }
+
+/* ===== TRUST SECTION ===== */
+.trust-section {
+  background:var(--green-dark);
+  padding:32px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  text-align:center;
+}
+.trust-item i { font-size:32px; color:var(--gold); margin-bottom:8px; display:block; }
+.trust-num { font-size:28px; font-weight:900; color:#fff; }
+.trust-label { font-size:13px; color:rgba(255,255,255,0.65); margin-top:2px; }
+
+/* ===== NOTIFICATION ===== */
+.notif-toast {
+  position:fixed; bottom:24px; left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:var(--green);
+  color:#fff;
+  padding:11px 28px;
+  border-radius:30px;
+  font-size:14px; font-weight:600;
+  border:1px solid var(--gold);
+  opacity:0;
+  transition:all .3s;
+  z-index:9999;
+  white-space:nowrap;
+}
+.notif-toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+/* ===== BUSINESS PAGE EXTRAS ===== */
+.biz-partners {
+  padding:24px 32px;
+  background:#fff;
+}
+.biz-partners h3 { font-size:18px; font-weight:800; color:var(--green); text-align:left; margin-bottom:16px; }
+.partners-row { display:flex; gap:20px; align-items:center; flex-wrap:wrap; }
+.partner-logo {
+  padding:10px 20px;
+  border:1px solid #e8e3d8;
+  border-radius:10px;
+  font-size:13px; font-weight:700;
+  color:var(--text-mid);
+}
+.biz-stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  padding:24px 32px;
+}
+.biz-stat {
+  background:var(--green);
+  border-radius:var(--radius);
+  padding:20px;
+  text-align:center;
+}
+.biz-stat-num { font-size:30px; font-weight:900; color:var(--gold); }
+.biz-stat-label { font-size:13px; color:rgba(255,255,255,0.8); margin-top:4px; }
+.biz-quote-btn {
+  display:block;
+  background:var(--gold);
+  color:var(--green);
+  font-size:16px; font-weight:900;
+  padding:14px;
+  border-radius:14px;
+  text-align:center;
+  margin:0 32px 32px;
+  transition:all .2s;
+}
+.biz-quote-btn:hover { background:var(--green); color:var(--gold); }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:700px) {
+  .detail-layout, .cart-layout, .checkout-layout { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:1fr; }
+  .nav-links { display:none; }
+  .trust-section, .biz-stats { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HOME PAGE ===== -->
+<div class="page active" id="page-home">
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-social">
+      <a href="#" onclick="showNotif('Instagram'); return false;" title="Instagram"><i class="ti ti-brand-instagram"></i></a>
+      <a href="#" onclick="showNotif('Snapchat'); return false;" title="Snapchat"><i class="ti ti-brand-snapchat"></i></a>
+      <a href="#" onclick="showNotif('Facebook'); return false;" title="Facebook"><i class="ti ti-brand-facebook"></i></a>
+      <a href="#" onclick="showNotif('خريطة الموقع'); return false;" title="Location"><i class="ti ti-map-pin"></i></a>
+    </div>
+    <div class="topbar-center">🚚 توصيل مجاني لقيمة الطلب +<span>٥٠ دينار</span></div>
+    <button class="topbar-lang" onclick="showNotif('English version coming soon!')">EN</button>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-logo" onclick="goHome()">
+      <div class="logo-icon"><i class="ti ti-coffee" aria-hidden="true"></i></div>
+      <div class="logo-texts">
+        <div class="logo-ar">أكوابي</div>
+        <div class="logo-en">AQUABE.JO</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a onclick="goPage('page-products','تيشريت')">تيشريت</a>
+      <a onclick="goPage('page-grads')">قسم الخريجين</a>
+      <a onclick="goPage('page-biz')">قسم الشركات</a>
+      <a onclick="goPage('page-posters')">البوسترات</a>
+      <a onclick="goPage('page-products','أكسسورات')">الأكسسورات</a>
+      <a onclick="goPage('page-products','ستيكرات')">الستيكرات</a>
+    </div>
+    <div class="nav-icons">
+      <button class="nav-icon-btn" onclick="showNotif('جاري البحث...')" aria-label="بحث"><i class="ti ti-search" aria-hidden="true"></i></button>
+      <button class="nav-icon-btn" onclick="goPage('page-cart')" aria-label="سلة المشتريات">
+        <i class="ti ti-shopping-cart" aria-hidden="true"></i>
+        <span class="cart-badge">٣</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-badge">✦ الهوية والإبداع بيد أهلها</div>
+    <h1>صنع بكامله <span>تفاصيله</span></h1>
+    <p>صورة محل عمّان · صور موديل · صورة إعلانية</p>
+    <div class="hero-imgs">
+      <div class="hero-img-card">
+        <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=200&h=250&fit=crop" alt="هودي">
+        <div class="hero-img-label">هودي</div>
+      </div>
+      <div class="hero-img-card">
+        <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=200&h=250&fit=crop" alt="أكواب">
+        <div class="hero-img-label">أكواب</div>
+      </div>
+      <div class="hero-img-card">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200&h=250&fit=crop" alt="بوسترات">
+        <div class="hero-img-label">بوسترات</div>
+      </div>
+      <div class="hero-img-card">
+        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=200&h=250&fit=crop" alt="هدايا">
+        <div class="hero-img-label">هدايا</div>
+      </div>
+      <div class="hero-img-card">
+        <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=200&h=250&fit=crop" alt="أكسسورات">
+        <div class="hero-img-label">أكسسورات</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- كولكشن الصيف -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">كولكشن الصيف</div>
+      <button class="more-btn" onclick="goPage('page-products','تيشريت')">عرض المزيد</button>
+    </div>
+    <div class="products-grid">
+      <div class="product-card" onclick="goPage('page-detail','هودي فلسطين','تيشرت','20')">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=300&h=300&fit=crop" alt="هودي فلسطين">
+          <span class="product-tag new">جديد</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">هودي فلسطين</div>
+          <div class="product-bottom">
+            <div class="product-price">20 JD</div>
+            <div class="add-cart-btn" onclick="addToCart(event)"><i class="ti ti-plus" aria-hidden="true"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" onclick="goPage('page-detail','هودي أسود','تيشرت','20')">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1520975954732-35dd22299614?w=300&h=300&fit=crop" alt="هودي أسود">
+        </div>
+        <div class="product-info">
+          <div class="product-name">هودي أسود</div>
+          <div class="product-bottom">
+            <div class="product-price">20 JD</div>
+            <div class="add-cart-btn" onclick="addToCart(event)"><i class="ti ti-plus" aria-hidden="true"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" onclick="goPage('page-detail','هودي أحمر','تيشرت','20')">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=300&h=300&fit=crop" alt="هودي أحمر">
+          <span class="product-tag">مميز</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">هودي أحمر</div>
+          <div class="product-bottom">
+            <div class="product-price">20 JD</div>
+            <div class="add-cart-btn" onclick="addToCart(event)"><i class="ti ti-plus" aria-hidden="true"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" onclick="goPage('page-detail','تيشرت كحلي','تيشرت','20')">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=300&h=300&fit=crop" alt="تيشرت كحلي">
+        </div>
+        <div class="product-info">
+          <div class="product-name">تيشرت كحلي</div>
+          <div class="product-bottom">
+            <div class="product-price">20 JD</div>
+            <div class="add-cart-btn" onclick="addToCart(event)"><i class="ti ti-plus" aria-hidden="true"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- أكواب -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">أكواب بتصاميم خاصة</div>
+      <button class="more-btn" onclick="goPage('page-products','أكواب')">عرض المزيد</button>
+    </div>
+    <div class="products-grid">
+      <div class="product-card" onclick="goPage('page-detail','كوب الأمنيات','كوب','12')">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=300&h=300&fit=crop" alt="كوب الأمنيات">
+          <span class="product-tag">مميز</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">كوب الأمنيات</div>
+          <div class="product-bottom">
+            <div class="product-price">12 JD</div>
+            <div class="add-cart-btn" onclick="addToCart(event)"><i class="ti ti-plus" aria-hidden="true"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" onclick="goPage('page-detail','كوب اليوم الأفضل','كوب','12')">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1577937927133-66ef06acdf18?w=300&h=300&fit=crop" alt="كوب اليوم الأفضل">
+        </div>
+        <div class="product-info">
+          <div class="product-name">كوب اليوم الأفضل</div>
+          <div class="product-bottom">
+            <div class="product-price">12 JD</div>
+            <div class="add-cart-btn" onclick="addToCart(event)"><i class="ti ti-plus" aria-hidden="true"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" onclick="goPage('page-detail','كوب فاسجد','كوب','12')">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop" alt="كوب فاسجد">
+        </div>
+        <div class="product-info">
+          <div class="product-name">كوب فاسجد</div>
+          <div class="product-bottom">
+            <div class="product-price">12 JD</div>
+            <div class="add-cart-btn" onclick="addToCart(event)"><i class="ti ti-plus" aria-hidden="true"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" onclick="goPage('page-detail','كوب مخصص','كوب','15')">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop" alt="كوب مخصص">
+          <span class="product-tag new">محدود</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">كوب مخصص</div>
+          <div class="product-bottom">
+            <div class="product-price">15 JD</div>
+            <div class="add-cart-btn" onclick="addToCart(event)"><i class="ti ti-plus" aria-hidden="true"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- عروض خاصة -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">عروض خاصة</div>
+      <button class="more-btn" onclick="goPage('page-products','عروض')">عرض المزيد</button>
+    </div>
+    <div class="products-grid">
+      <div class="product-card" onclick="goPage('page-detail','كوب راجعين','كوب','10')">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop" alt="كوب راجعين">
+          <span class="product-tag">عرض</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">كوب راجعين</div>
+          <div class="product-bottom">
+            <div class="product-price">10 JD</div>
+            <div class="add-cart-btn" onclick="addToCart(event)"><i class="ti ti-plus" aria-hidden="true"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" onclick="goPage('page-detail','كوب ناكر سام','كوب','10')">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=300&h=300&fit=crop" alt="كوب ناكر سام">
+        </div>
+        <div class="product-info">
+          <div class="product-name">كوب ناكر سام</div>
+          <div class="product-bottom">
+            <div class="product-price">10 JD</div>
+            <div class="add-cart-btn" onclick="addToCart(event)"><i class="ti ti-plus" aria-hidden="true"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" onclick="goPage('page-detail','كوب فني','كوب','12')">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1534073828943-f801091bb18e?w=300&h=300&fit=crop" alt="كوب فني">
+        </div>
+        <div class="product-info">
+          <div class="product-name">كوب فني</div>
+          <div class="product-bottom">
+            <div class="product-price">12 JD</div>
+            <div class="add-cart-btn" onclick="addToCart(event)"><i class="ti ti-plus" aria-hidden="true"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" onclick="goPage('page-detail','كوب ستارري نايت','كوب','14')">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300&h=300&fit=crop" alt="كوب ستارري نايت">
+          <span class="product-tag new">جديد</span>
+        </div>
+        <div class="product-info">
+          <div class="product-name">كوب ستارري نايت</div>
+          <div class="product-bottom">
+            <div class="product-price">14 JD</div>
+            <div class="add-cart-btn" onclick="addToCart(event)"><i class="ti ti-plus" aria-hidden="true"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust -->
+  <div class="trust-section">
+    <div class="trust-item">
+      <i class="ti ti-users" aria-hidden="true"></i>
+      <div class="trust-num">+2,500</div>
+      <div class="trust-label">كشريك نجاح</div>
+    </div>
+    <div class="trust-item">
+      <i class="ti ti-award" aria-hidden="true"></i>
+      <div class="trust-num">+150</div>
+      <div class="trust-label">براند موثوق</div>
+    </div>
+    <div class="trust-item">
+      <i class="ti ti-calendar" aria-hidden="true"></i>
+      <div class="trust-num">منذ 2022</div>
+      <div class="trust-label">خبرة وإبداع</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-big">أكوابي</div>
+        <div class="footer-logo-en">AQUABE.JO</div>
+        <div class="footer-desc">نقدم خدمات طباعة احترافية على الأكواب، الملابس، ومستلزمات الخريجين، والهدايا المطبوعة. فريقنا المتكامل جاهز دائماً للرد على جميع استفساراتكم بأسرع وقت وتقديم المساعدة بكل احترافية.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">حسابي</div>
+        <div class="footer-link-item" onclick="goPage('page-cart')">
+          <i class="ti ti-heart" aria-hidden="true"></i>
+          <span>المفضلة لديك</span>
+        </div>
+        <div class="footer-link-item" onclick="goPage('page-cart')">
+          <i class="ti ti-shopping-bag" aria-hidden="true"></i>
+          <span>سلة المشتريات</span>
+        </div>
+        <div class="footer-link-item" onclick="goPage('page-checkout')">
+          <i class="ti ti-check" aria-hidden="true"></i>
+          <span>إنهاء الطلب</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">تواصل معنا</div>
+        <div class="footer-link-item" onclick="showNotif('واتساب: +962 7X XXX XXXX')">
+          <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
+          <span>واتساب</span>
+        </div>
+        <div class="footer-link-item" onclick="showNotif('Instagram: @aquabe.jo')">
+          <i class="ti ti-brand-instagram" aria-hidden="true"></i>
+          <span>إنستغرام</span>
+        </div>
+        <div class="footer-link-item" onclick="showNotif('Snapchat: @aquabe')">
+          <i class="ti ti-brand-snapchat" aria-hidden="true"></i>
+          <span>سناب شات</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2024 أكوابي AQUABE.JO · صنع بكامله تفاصيله ✦</div>
+  </div>
+</div>
+
+<!-- ===== GRADS GATEWAY ===== -->
+<div class="page" id="page-grads">
+  <div class="topbar">
+    <div class="topbar-social">
+      <a onclick="showNotif('Instagram')"><i class="ti ti-brand-instagram"></i></a>
+      <a onclick="showNotif('Snapchat')"><i class="ti ti-brand-snapchat"></i></a>
+    </div>
+    <div class="topbar-center">🚚 توصيل مجاني لقيمة الطلب +<span style="color:var(--gold)">٥٠ دينار</span></div>
+    <button class="topbar-lang" onclick="showNotif('English coming soon!')">EN</button>
+  </div>
+  <nav class="navbar">
+    <div class="nav-logo" onclick="goHome()">
+      <div class="logo-icon"><i class="ti ti-coffee" aria-hidden="true"></i></div>
+      <div class="logo-texts">
+        <div class="logo-ar">أكوابي</div>
+        <div class="logo-en">AQUABE.JO</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a onclick="goPage('page-products','تيشريت')">تيشريت</a>
+      <a onclick="goPage('page-grads')" style="color:var(--gold)">قسم الخريجين</a>
+      <a onclick="goPage('page-biz')">قسم الشركات</a>
+      <a onclick="goPage('page-posters')">البوسترات</a>
+      <a onclick="goPage('page-products','أكسسورات')">الأكسسورات</a>
+      <a onclick="goPage('page-products','ستيكرات')">الستيكرات</a>
+    </div>
+    <div class="nav-icons">
+      <button class="nav-icon-btn" onclick="showNotif('بحث')" aria-label="بحث"><i class="ti ti-search"></i></button>
+      <button class="nav-icon-btn" onclick="goPage('page-cart')" aria-label="سلة">
+        <i class="ti ti-shopping-cart"></i>
+        <span class="cart-badge">٣</span>
+      </button>
+    </div>
+  </nav>
+  <div class="gateway-hero">
+    <h2>🎓 بوابة الخريجين</h2>
+    <p>كل ما تحتاجه لحفل تخرج لا يُنسى</p>
+  </div>
+  <div class="gateway-grid">
+    <div class="gateway-card" onclick="goPage('page-products','أرواب تخرج مطرزة')">
+      <div class="gateway-card-img">
+        <img src="https://images.unsplash.com/photo-1627556704302-624286467c65?w=400&h=300&fit=crop" alt="أرواب تخرج">
+        <div class="gateway-card-overlay">
+          <div>
+            <div class="gateway-card-name">أرواب تخرج مطرزة</div>
+            <div class="gateway-card-en">Embroidered Graduation Gowns</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gateway-card" onclick="goPage('page-products','هدايا تخرج مميزة')">
+      <div class="gateway-card-img">
+        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=400&h=300&fit=crop" alt="هدايا تخرج">
+        <div class="gateway-card-overlay">
+          <div>
+            <div class="gateway-card-name">هدايا تخرج مميزة</div>
+            <div class="gateway-card-en">Graduation Gifts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gateway-card" onclick="goPage('page-products','أكواب التخرج')">
+      <div class="gateway-card-img">
+        <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=400&h=300&fit=crop" alt="أكواب التخرج">
+        <div class="gateway-card-overlay">
+          <div>
+            <div class="gateway-card-name">أكواب التخرج</div>
+            <div class="gateway-card-en">Graduation Mugs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gateway-card" onclick="goPage('page-products','مطبوعات الحفل')">
+      <div class="gateway-card-img">
+        <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=300&fit=crop" alt="مطبوعات الحفل">
+        <div class="gateway-card-overlay">
+          <div>
+            <div class="gateway-card-name">مطبوعات الحفل</div>
+            <div class="gateway-card-en">Party Prints</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="gateway-cta">
+    <button class="gateway-cta-btn" onclick="showNotif('سيتم التواصل معك قريباً!')">
+      <i class="ti ti-sparkles" aria-hidden="true"></i>
+      ابدأ بتصميم حفل تخرجك
+    </button>
+  </div>
+  <div class="footer" style="padding:24px 32px 16px;">
+    <div class="footer-bottom" style="border-top:none;padding-top:0;">© 2024 أكوابي AQUABE.JO</div>
+  </div>
+</div>
+
+<!-- ===== BIZ GATEWAY ===== -->
+<div class="page" id="page-biz">
+  <div class="topbar">
+    <div class="topbar-social">
+      <a onclick="showNotif('Instagram')"><i class="ti ti-brand-instagram"></i></a>
+      <a onclick="showNotif('Snapchat')"><i class="ti ti-brand-snapchat"></i></a>
+    </div>
+    <div class="topbar-center">🚚 توصيل مجاني لقيمة الطلب +<span style="color:var(--gold)">٥٠ دينار</span></div>
+    <button class="topbar-lang" onclick="showNotif('English coming soon!')">EN</button>
+  </div>
+  <nav class="navbar">
+    <div class="nav-logo" onclick="goHome()">
+      <div class="logo-icon"><i class="ti ti-coffee" aria-hidden="true"></i></div>
+      <div class="logo-texts">
+        <div class="logo-ar">أكوابي</div>
+        <div class="logo-en">AQUABE.JO</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a onclick="goPage('page-products','تيشريت')">تيشريت</a>
+      <a onclick="goPage('page-grads')">قسم الخريجين</a>
+      <a onclick="goPage('page-biz')" style="color:var(--gold)">قسم الشركات</a>
+      <a onclick="goPage('page-posters')">البوسترات</a>
+      <a onclick="goPage('page-products','أكسسورات')">الأكسسورات</a>
+      <a onclick="goPage('page-products','ستيكرات')">الستيكرات</a>
+    </div>
+    <div class="nav-icons">
+      <button class="nav-icon-btn" onclick="showNotif('بحث')" aria-label="بحث"><i class="ti ti-search"></i></button>
+      <button class="nav-icon-btn" onclick="goPage('page-cart')" aria-label="سلة">
+        <i class="ti ti-shopping-cart"></i>
+        <span class="cart-badge">٣</span>
+      </button>
+    </div>
+  </nav>
+  <div class="gateway-hero" style="background:var(--green-dark);">
+    <h2>🏢 حلول مخصصة لأعمالك</h2>
+    <p>Custom Solutions for Your Business and B2B</p>
+  </div>
+  <div class="gateway-grid">
+    <div class="gateway-card" onclick="goPage('page-products','هدايا الشركات')">
+      <div class="gateway-card-img">
+        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=400&h=300&fit=crop" alt="هدايا الشركات">
+        <div class="gateway-card-overlay">
+          <div>
+            <div class="gateway-card-name">هدايا الشركات</div>
+            <div class="gateway-card-en">High-end customized gift box set</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gateway-card" onclick="goPage('page-products','مطبوعات المحلات')">
+      <div class="gateway-card-img">
+        <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=300&fit=crop" alt="مطبوعات المحلات">
+        <div class="gateway-card-overlay">
+          <div>
+            <div class="gateway-card-name">مطبوعات المحلات</div>
+            <div class="gateway-card-en">Customized product hangtags</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gateway-card" onclick="goPage('page-products','أكواب البراند')">
+      <div class="gateway-card-img">
+        <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=400&h=300&fit=crop" alt="أكواب البراند">
+        <div class="gateway-card-overlay">
+          <div>
+            <div class="gateway-card-name">أكواب البراند</div>
+            <div class="gateway-card-en">Laser-engraved corporate logos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gateway-card" onclick="goPage('page-products','يونيفورم موحد')">
+      <div class="gateway-card-img">
+        <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=400&h=300&fit=crop" alt="يونيفورم موحد">
+        <div class="gateway-card-overlay">
+          <div>
+            <div class="gateway-card-name">يونيفورم موحد</div>
+            <div class="gateway-card-en">Branded Uniforms</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="biz-stats">
+    <div class="biz-stat">
+      <div class="biz-stat-num">+2,500</div>
+      <div class="biz-stat-label">كشريك نجاح</div>
+    </div>
+    <div class="biz-stat">
+      <div class="biz-stat-num">+150</div>
+      <div class="biz-stat-label">براند</div>
+    </div>
+    <div class="biz-stat">
+      <div class="biz-stat-num">2022</div>
+      <div class="biz-stat-label">منذ</div>
+    </div>
+  </div>
+  <div class="biz-partners">
+    <h3>إثبات الثقة — شركاء النجاح</h3>
+    <div class="partners-row">
+      <div class="partner-logo">Cafe Cave</div>
+      <div class="partner-logo">Startups JO</div>
+      <div class="partner-logo">السلط Shop</div>
+      <div class="partner-logo">GiaStups</div>
+      <div class="partner-logo">Travel Mug Co.</div>
+    </div>
+  </div>
+  <button class="biz-quote-btn" onclick="showNotif('سيتم التواصل معك لعرض سعر الكميات!')">
+    اطلب عرض سعر كميات
+  </button>
+  <div class="footer" style="padding:24px 32px 16px;">
+    <div class="footer-bottom" style="border-top:none;padding-top:0;">© 2024 أكوابي AQUABE.JO</div>
+  </div>
+</div>
+
+<!-- ===== POSTERS GATEWAY ===== -->
+<div class="page" id="page-posters">
+  <div class="topbar">
+    <div class="topbar-social">
+      <a onclick="showNotif('Instagram')"><i class="ti ti-brand-instagram"></i></a>
+      <a onclick="showNotif('Snapchat')"><i class="ti ti-brand-snapchat"></i></a>
+    </div>
+    <div class="topbar-center">🚚 توصيل مجاني لقيمة الطلب +<span style="color:var(--gold)">٥٠ دينار</span></div>
+    <button class="topbar-lang" onclick="showNotif('English coming soon!')">EN</button>
+  </div>
+  <nav class="navbar">
+    <div class="nav-logo" onclick="goHome()">
+      <div class="logo-icon"><i class="ti ti-coffee" aria-hidden="true"></i></div>
+      <div class="logo-texts">
+        <div class="logo-ar">أكوابي</div>
+        <div class="logo-en">AQUABE.JO</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a onclick="goPage('page-products','تيشريت')">تيشريت</a>
+      <a onclick="goPage('page-grads')">قسم الخريجين</a>
+      <a onclick="goPage('page-biz')">قسم الشركات</a>
+      <a onclick="goPage('page-posters')" style="color:var(--gold)">البوسترات</a>
+      <a onclick="goPage('page-products','أكسسورات')">الأكسسورات</a>
+      <a onclick="goPage('page-products','ستيكرات')">الستيكرات</a>
+    </div>
+    <div class="nav-icons">
+      <button class="nav-icon-btn" onclick="showNotif('بحث')" aria-label="بحث"><i class="ti ti-search"></i></button>
+      <button class="nav-icon-btn" onclick="goPage('page-cart')" aria-label="سلة">
+        <i class="ti ti-shopping-cart"></i>
+        <span class="cart-badge">٣</span>
+      </button>
+    </div>
+  </nav>
+  <div class="gateway-hero" style="background:#1a1a2e;">
+    <h2>🎬 بوسترات بتصاميم مميزة</h2>
+    <p>أغاني · أفلام · تراث عربي · تصاميم حصرية</p>
+  </div>
+  <div class="gateway-grid">
+    <div class="gateway-card" onclick="goPage('page-products','بوسترات أغاني')">
+      <div class="gateway-card-img">
+        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop" alt="بوسترات أغاني">
+        <div class="gateway-card-overlay">
+          <div>
+            <div class="gateway-card-name">بوسترات أغاني</div>
+            <div class="gateway-card-en">Music Posters</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gateway-card" onclick="goPage('page-products','بوسترات أفلام')">
+      <div class="gateway-card-img">
+        <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=300&fit=crop" alt="بوسترات أفلام">
+        <div class="gateway-card-overlay">
+          <div>
+            <div class="gateway-card-name">بوسترات أفلام</div>
+            <div class="gateway-card-en">Movie Posters</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gateway-card" onclick="goPage('page-products','بوسترات عربية')">
+      <div class="gateway-card-img">
+        <img src="https://images.unsplash.com/photo-1597926661870-b4e1ade9c176?w=400&h=300&fit=crop" alt="بوسترات عربية">
+        <div class="gateway-card-overlay">
+          <div>
+            <div class="gateway-card-name">بوسترات عربية</div>
+            <div class="gateway-card-en">Arabic Posters</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer" style="padding:24px 32px 16px;">
+    <div class="footer-bottom" style="border-top:none;padding-top:0;">© 2024 أكوابي AQUABE.JO</div>
+  </div>
+</div>
+
+<!-- ===== PRODUCTS LISTING PAGE ===== -->
+<div class="page" id="page-products">
+  <div class="topbar">
+    <div class="topbar-social">
+      <a onclick="showNotif('Instagram')"><i class="ti ti-brand-instagram"></i></a>
+      <a onclick="showNotif('Snapchat')"><i class="ti ti-brand-snapchat"></i></a>
+    </div>
+    <div class="topbar-center">🚚 توصيل مجاني لقيمة الطلب +<span style="color:var(--gold)">٥٠ دينار</span></div>
+    <button class="topbar-lang" onclick="showNotif('English coming soon!')">EN</button>
+  </div>
+  <nav class="navbar">
+    <div class="nav-logo" onclick="goHome()">
+      <div class="logo-icon"><i class="ti ti-coffee" aria-hidden="true"></i></div>
+      <div class="logo-texts">
+        <div class="logo-ar">أكوابي</div>
+        <div class="logo-en">AQUABE.JO</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a onclick="goPage('page-products','تيشريت')">تيشريت</a>
+      <a onclick="goPage('page-grads')">قسم الخريجين</a>
+      <a onclick="goPage('page-biz')">قسم الشركات</a>
+      <a onclick="goPage('page-posters')">البوسترات</a>
+      <a onclick="goPage('page-products','أكسسورات')">الأكسسورات</a>
+      <a onclick="goPage('page-products','ستيكرات')">الستيكرات</a>
+    </div>
+    <div class="nav-icons">
+      <button class="nav-icon-btn" onclick="showNotif('بحث')" aria-label="بحث"><i class="ti ti-search"></i></button>
+      <button class="nav-icon-btn" onclick="goPage('page-cart')" aria-label="سلة">
+        <i class="ti ti-shopping-cart"></i>
+        <span class="cart-badge">٣</span>
+      </button>
+    </div>
+  </nav>
+  <div class="products-page-header">
+    <button class="back-btn" onclick="history.back()" aria-label="رجوع"><i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+    <h2 id="products-page-title">المنتجات</h2>
+  </div>
+  <div class="products-page-content">
+    <div class="products-grid" id="products-grid">
+      <!-- filled by JS -->
+    </div>
+  </div>
+  <div class="footer" style="padding:24px 32px 16px; margin-top:20px;">
+    <div class="footer-bottom" style="border-top:none;padding-top:0;">© 2024 أكوابي AQUABE.JO</div>
+  </div>
+</div>
+
+<!-- ===== PRODUCT DETAIL PAGE ===== -->
+<div class="page" id="page-detail">
+  <div class="topbar">
+    <div class="topbar-social">
+      <a onclick="showNotif('Instagram')"><i class="ti ti-brand-instagram"></i></a>
+    </div>
+    <div class="topbar-center">🚚 توصيل مجاني لقيمة الطلب +<span style="color:var(--gold)">٥٠ دينار</span></div>
+    <button class="topbar-lang" onclick="showNotif('English coming soon!')">EN</button>
+  </div>
+  <nav class="navbar">
+    <div class="nav-logo" onclick="goHome()">
+      <div class="logo-icon"><i class="ti ti-coffee" aria-hidden="true"></i></div>
+      <div class="logo-texts">
+        <div class="logo-ar">أكوابي</div>
+        <div class="logo-en">AQUABE.JO</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a onclick="goPage('page-products','تيشريت')">تيشريت</a>
+      <a onclick="goPage('page-grads')">قسم الخريجين</a>
+      <a onclick="goPage('page-biz')">قسم الشركات</a>
+      <a onclick="goPage('page-posters')">البوسترات</a>
+    </div>
+    <div class="nav-icons">
+      <button class="nav-icon-btn" onclick="showNotif('بحث')" aria-label="بحث"><i class="ti ti-search"></i></button>
+      <button class="nav-icon-btn" onclick="goPage('page-cart')" aria-label="سلة">
+        <i class="ti ti-shopping-cart"></i>
+        <span class="cart-badge">٣</span>
+      </button>
+    </div>
+  </nav>
+  <div class="detail-layout">
+    <!-- Gallery -->
+    <div class="detail-gallery">
+      <div class="detail-main-img">
+        <img id="detail-main-img" src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=600&h=500&fit=crop" alt="صورة المنتج">
+      </div>
+      <div class="detail-thumbnails">
+        <div class="detail-thumb active" onclick="switchImg(this, 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=200&h=200&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=200&h=200&fit=crop" alt="صورة 1">
+        </div>
+        <div class="detail-thumb" onclick="switchImg(this, 'https://images.unsplash.com/photo-1577937927133-66ef06acdf18?w=200&h=200&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1577937927133-66ef06acdf18?w=200&h=200&fit=crop" alt="صورة 2">
+        </div>
+        <div class="detail-thumb" onclick="switchImg(this, 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=200&h=200&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=200&h=200&fit=crop" alt="صورة 3">
+        </div>
+        <div class="detail-thumb" onclick="switchImg(this, 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop')">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop" alt="صورة 4">
+        </div>
+      </div>
+    </div>
+    <!-- Info -->
+    <div class="detail-info">
+      <div class="detail-breadcrumb">أكوابي ← <span id="detail-category">أكواب</span></div>
+      <div class="detail-name" id="detail-name">كوب سيراميك مخصص - إصدار 2024</div>
+      <div class="detail-stars">
+        <span class="stars">★★★★★</span>
+        <span class="rating-text">(4.9/5) · 128 تقييم</span>
+      </div>
+      <div class="detail-price" id="detail-price">12.00 JD</div>
+      <div class="detail-divider"></div>
+
+      <!-- Options change based on product type -->
+      <div id="detail-options-mug">
+        <div class="option-label">اختر لون الكوب</div>
+        <div class="color-options">
+          <div class="color-dot active" style="background:#f5f0e0;" onclick="selectColor(this)"></div>
+          <div class="color-dot" style="background:#c8a87a;" onclick="selectColor(this)"></div>
+          <div class="color-dot" style="background:#c0623b;" onclick="selectColor(this)"></div>
+          <div class="color-dot" style="background:#8b3a2a;" onclick="selectColor(this)"></div>
+          <div class="color-dot" style="background:#3a7a6a;" onclick="selectColor(this)"></div>
+          <div class="color-dot" style="background:#2a4a6a;" onclick="selectColor(this)"></div>
+          <div class="color-dot" style="background:#1a1a1a;" onclick="selectColor(this)"></div>
+          <div class="color-dot" style="background:#fff; border:1px solid #ddd;" onclick="selectColor(this)"></div>
+          <div class="color-dot" style="background:#a8c4d4;" onclick="selectColor(this)"></div>
+          <div class="color-dot" style="background:#e88a8a;" onclick="selectColor(this)"></div>
+          <div class="color-dot" style="background:#5a8a5a;" onclick="selectColor(this)"></div>
+          <div class="color-dot" style="background:#C9A84C;" onclick="selectColor(this)"></div>
+        </div>
+        <div class="option-label">اختر سعة الكوب</div>
+        <select class="select-box">
+          <option>12oz</option>
+          <option>16oz</option>
+        </select>
+        <div class="option-label">نوع الطباعة</div>
+        <select class="select-box">
+          <option>Laser</option>
+          <option>Gold Foil</option>
+          <option>Full Color Print</option>
+        </select>
+      </div>
+
+      <div id="detail-options-shirt" style="display:none;">
+        <div class="option-label">اختر المقاس</div>
+        <select class="select-box">
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+          <option>XL</option>
+          <option>XXL</option>
+        </select>
+        <div class="option-label">اختر اللون</div>
+        <div class="color-options">
+          <div class="color-dot active" style="background:#1a1a1a;" onclick="selectColor(this)"></div>
+          <div class="color-dot" style="background:#c0392b;" onclick="selectColor(this)"></div>
+          <div class="color-dot" style="background:#153E2B;" onclick="selectColor(this)"></div>
+          <div class="color-dot" style="background:#2c3e50;" onclick="selectColor(this)"></div>
+          <div class="color-dot" style="background:#fff; border:1px solid #ddd;" onclick="selectColor(this)"></div>
+        </div>
+        <div class="option-label">نوع الطباعة</div>
+        <select class="select-box">
+          <option>طباعة رقمية</option>
+          <option>تطريز</option>
+          <option>سيلك</option>
+        </select>
+      </div>
+
+      <div class="detail-btns">
+        <button class="btn-primary" onclick="addToCart2()">أضف إلى السلة</button>
+        <button class="btn-whatsapp" onclick="showNotif('جاري فتح واتساب...')">
+          <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
+          تخصيص
+        </button>
+      </div>
+      <div class="how-it-works">
+        <h4>How it works</h4>
+        <div class="how-steps">
+          <div class="how-step">
+            <i class="ti ti-hand-click" aria-hidden="true"></i>
+            <span>Pick</span>
+          </div>
+          <span class="how-arrow">›</span>
+          <div class="how-step">
+            <i class="ti ti-adjustments" aria-hidden="true"></i>
+            <span>Customize</span>
+          </div>
+          <span class="how-arrow">›</span>
+          <div class="how-step">
+            <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
+            <span>WhatsApp</span>
+          </div>
+          <span class="how-arrow">›</span>
+          <div class="how-step">
+            <i class="ti ti-truck" aria-hidden="true"></i>
+            <span>Delivery</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer" style="padding:24px 32px 16px; margin-top:10px;">
+    <div class="footer-bottom" style="border-top:none;padding-top:0;">© 2024 أكوابي AQUABE.JO</div>
+  </div>
+</div>
+
+<!-- ===== CART PAGE ===== -->
+<div class="page" id="page-cart">
+  <div class="topbar">
+    <div class="topbar-social">
+      <a onclick="showNotif('Instagram')"><i class="ti ti-brand-instagram"></i></a>
+    </div>
+    <div class="topbar-center">🚚 توصيل مجاني لقيمة الطلب +<span style="color:var(--gold)">٥٠ دينار</span></div>
+    <button class="topbar-lang" onclick="showNotif('English coming soon!')">EN</button>
+  </div>
+  <nav class="navbar">
+    <div class="nav-logo" onclick="goHome()">
+      <div class="logo-icon"><i class="ti ti-coffee" aria-hidden="true"></i></div>
+      <div class="logo-texts">
+        <div class="logo-ar">أكوابي</div>
+        <div class="logo-en">AQUABE.JO</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a onclick="goHome()">الرئيسية</a>
+      <a onclick="goPage('page-grads')">قسم الخريجين</a>
+      <a onclick="goPage('page-biz')">قسم الشركات</a>
+    </div>
+    <div class="nav-icons">
+      <button class="nav-icon-btn" onclick="goPage('page-cart')" aria-label="سلة" style="border-color:var(--gold);">
+        <i class="ti ti-shopping-cart" style="color:var(--gold)"></i>
+        <span class="cart-badge">٣</span>
+      </button>
+    </div>
+  </nav>
+  <div class="cart-layout">
+    <div>
+      <div class="cart-section-title"><i class="ti ti-shopping-bag" aria-hidden="true"></i> سلة المشتريات (٣ منتجات)</div>
+      <div class="cart-item">
+        <div class="cart-item-img">
+          <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=160&h=160&fit=crop" alt="كوب">
+        </div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">كوب سيراميك مخصص</div>
+          <div class="cart-item-details">لون: أسود · 12oz · Laser</div>
+          <div class="cart-item-bottom">
+            <div class="cart-item-price">12 JD</div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div class="qty-ctrl">
+                <div class="qty-btn" onclick="changeQty(this,-1)">−</div>
+                <span class="qty-num">1</span>
+                <div class="qty-btn" onclick="changeQty(this,1)">+</div>
+              </div>
+              <div class="remove-btn" onclick="showNotif('تم حذف المنتج')"><i class="ti ti-trash" aria-hidden="true"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cart-item">
+        <div class="cart-item-img">
+          <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=160&h=160&fit=crop" alt="هودي">
+        </div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">هودي فلسطين</div>
+          <div class="cart-item-details">مقاس: L · لون: أسود · تطريز</div>
+          <div class="cart-item-bottom">
+            <div class="cart-item-price">20 JD</div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div class="qty-ctrl">
+                <div class="qty-btn" onclick="changeQty(this,-1)">−</div>
+                <span class="qty-num">2</span>
+                <div class="qty-btn" onclick="changeQty(this,1)">+</div>
+              </div>
+              <div class="remove-btn" onclick="showNotif('تم حذف المنتج')"><i class="ti ti-trash" aria-hidden="true"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wishlist -->
+      <div class="wishlist-section">
+        <div class="cart-section-title"><i class="ti ti-heart" aria-hidden="true"></i> المفضلة لديك</div>
+        <div class="wishlist-item">
+          <div class="wishlist-item-img">
+            <img src="https://images.unsplash.com/photo-1577937927133-66ef06acdf18?w=120&h=120&fit=crop" alt="كوب">
+          </div>
+          <div>
+            <div class="wishlist-name">كوب اليوم الأفضل</div>
+            <div class="wishlist-price">12 JD</div>
+            <button class="move-to-cart" onclick="showNotif('تمت الإضافة للسلة!')">أضف للسلة</button>
+          </div>
+        </div>
+        <div class="wishlist-item">
+          <div class="wishlist-item-img">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=120&h=120&fit=crop" alt="بوستر">
+          </div>
+          <div>
+            <div class="wishlist-name">بوستر ستارري نايت</div>
+            <div class="wishlist-price">8 JD</div>
+            <button class="move-to-cart" onclick="showNotif('تمت الإضافة للسلة!')">أضف للسلة</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="order-summary">
+        <div style="font-size:17px;font-weight:900;color:var(--green);margin-bottom:14px;">ملخص الطلب</div>
+        <div class="summary-row"><span>المجموع الجزئي</span><span>52 JD</span></div>
+        <div class="summary-row"><span>التوصيل</span><span style="color:green;">مجاني ✓</span></div>
+        <div class="summary-row"><span>الضريبة (16%)</span><span>8.32 JD</span></div>
+        <div class="summary-row total"><span>الإجمالي</span><span>60.32 JD</span></div>
+        <button class="checkout-btn" onclick="goPage('page-checkout')">
+          إتمام الطلب ←
+        </button>
+        <button style="width:100%;background:transparent;border:1.5px solid var(--green);color:var(--green);font-size:14px;font-weight:700;padding:10px;border-radius:12px;margin-top:8px;" onclick="goHome()">
+          متابعة التسوق
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="footer" style="padding:24px 32px 16px; margin-top:20px;">
+    <div class="footer-bottom" style="border-top:none;padding-top:0;">© 2024 أكوابي AQUABE.JO</div>
+  </div>
+</div>
+
+<!-- ===== CHECKOUT PAGE ===== -->
+<div class="page" id="page-checkout">
+  <div class="topbar">
+    <div class="topbar-center">🔒 دفع آمن ومشفر</div>
+  </div>
+  <nav class="navbar">
+    <div class="nav-logo" onclick="goHome()">
+      <div class="logo-icon"><i class="ti ti-coffee" aria-hidden="true"></i></div>
+      <div class="logo-texts">
+        <div class="logo-ar">أكوابي</div>
+        <div class="logo-en">AQUABE.JO</div>
+      </div>
+    </div>
+    <div style="font-size:14px;font-weight:700;color:var(--text-mid);">
+      <span style="color:var(--gold)">●</span> السلة &nbsp;›&nbsp; <span style="color:var(--green);font-weight:900;">إتمام الطلب</span>
+    </div>
+    <div style="width:120px;"></div>
+  </nav>
+  <div class="checkout-layout">
+    <div>
+      <div class="form-card">
+        <div class="form-card-title"><i class="ti ti-user" aria-hidden="true"></i> معلومات التوصيل</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>الاسم الأول</label>
+            <input class="form-input" type="text" placeholder="محمد">
+          </div>
+          <div class="form-group">
+            <label>اسم العائلة</label>
+            <input class="form-input" type="text" placeholder="أحمد">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>رقم الهاتف</label>
+          <input class="form-input" type="tel" placeholder="07X XXX XXXX">
+        </div>
+        <div class="form-group">
+          <label>المحافظة</label>
+          <select class="form-input">
+            <option>عمّان</option>
+            <option>الزرقاء</option>
+            <option>إربد</option>
+            <option>العقبة</option>
+            <option>الكرك</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>العنوان التفصيلي</label>
+          <input class="form-input" type="text" placeholder="الحي، الشارع، رقم البناية">
+        </div>
+        <div class="form-group">
+          <label>ملاحظات إضافية (اختياري)</label>
+          <input class="form-input" type="text" placeholder="أي تفاصيل إضافية...">
+        </div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-card-title"><i class="ti ti-coffee" aria-hidden="true"></i> تفاصيل المنتج</div>
+        <div class="product-options">
+          <div class="product-option-row"><span>المنتج</span><span id="co-name">كوب سيراميك مخصص</span></div>
+          <div class="product-option-row"><span>النوع</span><span id="co-type">كوب</span></div>
+          <div class="product-option-row"><span>اللون</span><span>أسود</span></div>
+          <div class="product-option-row"><span>الطباعة</span><span>Laser</span></div>
+          <div class="product-option-row"><span>الكمية</span><span>1</span></div>
+        </div>
+        <div class="product-options" style="margin-top:8px;">
+          <div class="product-option-row"><span>سعر المنتج</span><span id="co-price">12 JD</span></div>
+          <div class="product-option-row"><span>التوصيل</span><span style="color:green;">مجاني</span></div>
+          <div class="product-option-row" style="font-weight:900;font-size:15px;"><span>الإجمالي</span><span>60.32 JD</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="order-summary" style="top:80px;">
+        <div style="font-size:17px;font-weight:900;color:var(--green);margin-bottom:14px;">ملخص الطلب</div>
+        <div class="cart-item" style="margin-bottom:12px;padding:10px;">
+          <div class="cart-item-img" style="width:56px;height:56px;">
+            <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=100&h=100&fit=crop" alt="كوب">
+          </div>
+          <div class="cart-item-info">
+            <div class="cart-item-name" style="font-size:13px;">كوب سيراميك مخصص</div>
+            <div class="cart-item-price">12 JD</div>
+          </div>
+        </div>
+        <div class="cart-item" style="margin-bottom:12px;padding:10px;">
+          <div class="cart-item-img" style="width:56px;height:56px;">
+            <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=100&h=100&fit=crop" alt="هودي">
+          </div>
+          <div class="cart-item-info">
+            <div class="cart-item-name" style="font-size:13px;">هودي فلسطين ×2</div>
+            <div class="cart-item-price">40 JD</div>
+          </div>
+        </div>
+        <div class="summary-row"><span>المجموع</span><span>52 JD</span></div>
+        <div class="summary-row"><span>التوصيل</span><span style="color:green;">مجاني ✓</span></div>
+        <div class="summary-row"><span>الضريبة</span><span>8.32 JD</span></div>
+        <div class="summary-row total"><span>الإجمالي</span><span>60.32 JD</span></div>
+        <button class="place-order-btn" onclick="placeOrder()">
+          <i class="ti ti-check" aria-hidden="true"></i>
+          تأكيد الطلب
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="footer" style="padding:24px 32px 16px; margin-top:20px;">
+    <div class="footer-bottom" style="border-top:none;padding-top:0;">© 2024 أكوابي AQUABE.JO · 🔒 دفع آمن</div>
+  </div>
+</div>
+
+<!-- NOTIFICATION TOAST -->
+<div class="notif-toast" id="notif-toast"></div>
+
+<script>
+const allProducts = [
+  { name:'هودي فلسطين', price:'20', type:'تيشرت', img:'https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=300&h=300&fit=crop', tag:'جديد', tagClass:'new' },
+  { name:'هودي أسود', price:'20', type:'تيشرت', img:'https://images.unsplash.com/photo-1520975954732-35dd22299614?w=300&h=300&fit=crop', tag:'', tagClass:'' },
+  { name:'هودي أحمر', price:'20', type:'تيشرت', img:'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=300&h=300&fit=crop', tag:'مميز', tagClass:'' },
+  { name:'تيشرت كحلي', price:'20', type:'تيشرت', img:'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=300&h=300&fit=crop', tag:'', tagClass:'' },
+  { name:'تيشرت أبيض', price:'18', type:'تيشرت', img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300&h=300&fit=crop', tag:'', tagClass:'' },
+  { name:'تيشرت رمادي', price:'18', type:'تيشرت', img:'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=300&h=300&fit=crop', tag:'', tagClass:'' },
+  { name:'كوب الأمنيات', price:'12', type:'كوب', img:'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=300&h=300&fit=crop', tag:'مميز', tagClass:'' },
+  { name:'كوب اليوم الأفضل', price:'12', type:'كوب', img:'https://images.unsplash.com/photo-1577937927133-66ef06acdf18?w=300&h=300&fit=crop', tag:'', tagClass:'' },
+  { name:'كوب فاسجد', price:'12', type:'كوب', img:'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop', tag:'', tagClass:'' },
+  { name:'كوب مخصص فاخر', price:'15', type:'كوب', img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop', tag:'محدود', tagClass:'new' },
+  { name:'كوب راجعين', price:'10', type:'كوب', img:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop', tag:'عرض', tagClass:'' },
+  { name:'كوب ناكر سام', price:'10', type:'كوب', img:'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=300&h=300&fit=crop', tag:'', tagClass:'' },
+  { name:'كوب فني', price:'12', type:'كوب', img:'https://images.unsplash.com/photo-1534073828943-f801091bb18e?w=300&h=300&fit=crop', tag:'', tagClass:'' },
+  { name:'كوب ستارري نايت', price:'14', type:'كوب', img:'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300&h=300&fit=crop', tag:'جديد', tagClass:'new' },
+  { name:'روب تخرج مطرز', price:'35', type:'تخرج', img:'https://images.unsplash.com/photo-1627556704302-624286467c65?w=300&h=300&fit=crop', tag:'', tagClass:'' },
+  { name:'هدية تخرج فاخرة', price:'45', type:'تخرج', img:'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&h=300&fit=crop', tag:'مميز', tagClass:'' },
+  { name:'بوستر أغنية مفضلة', price:'8', type:'بوستر', img:'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=300&fit=crop', tag:'', tagClass:'' },
+  { name:'بوستر فيلم كلاسيكي', price:'8', type:'بوستر', img:'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=300&h=300&fit=crop', tag:'', tagClass:'' },
+  { name:'بوستر تراثي عربي', price:'10', type:'بوستر', img:'https://images.unsplash.com/photo-1597926661870-b4e1ade9c176?w=300&h=300&fit=crop', tag:'مميز', tagClass:'' },
+  { name:'ستيكر مخصص', price:'3', type:'ستيكر', img:'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=300&h=300&fit=crop', tag:'', tagClass:'' },
+  { name:'كوب شركات براند', price:'18', type:'شركات', img:'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=300&h=300&fit=crop', tag:'', tagClass:'' },
+  { name:'يونيفورم مخصص', price:'25', type:'شركات', img:'https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=300&h=300&fit=crop', tag:'', tagClass:'' },
+];
+
+let pageHistory = [];
+
+function showNotif(msg) {
+  const t = document.getElementById('notif-toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function goHome() {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-home').classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function goPage(pageId, context, category, price) {
+  pageHistory.push(document.querySelector('.page.active').id);
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const page = document.getElementById(pageId);
+  if (!page) return;
+  page.classList.add('active');
+  window.scrollTo(0, 0);
+
+  if (pageId === 'page-products' && context) {
+    document.getElementById('products-page-title').textContent = context;
+    renderProducts(context);
+  }
+
+  if (pageId === 'page-detail' && context) {
+    document.getElementById('detail-name').textContent = context;
+    document.getElementById('detail-price').textContent = (price || '12') + '.00 JD';
+    document.getElementById('detail-category').textContent = category || 'منتجات';
+    document.getElementById('co-name').textContent = context;
+    document.getElementById('co-type').textContent = category || '';
+    document.getElementById('co-price').textContent = (price || '12') + ' JD';
+
+    const isMug = (category === 'كوب' || context.includes('كوب'));
+    document.getElementById('detail-options-mug').style.display = isMug ? 'block' : 'none';
+    document.getElementById('detail-options-shirt').style.display = !isMug ? 'block' : 'none';
+  }
+}
+
+function renderProducts(context) {
+  const grid = document.getElementById('products-grid');
+  const keywords = context.toLowerCase();
+  let filtered = allProducts.filter(p => {
+    if (keywords.includes('تيشر') || keywords.includes('هودي') || keywords.includes('ملابس')) return p.type === 'تيشرت';
+    if (keywords.includes('كوب')) return p.type === 'كوب';
+    if (keywords.includes('خريجين') || keywords.includes('تخرج')) return p.type === 'تخرج' || p.type === 'كوب';
+    if (keywords.includes('شركات') || keywords.includes('براند') || keywords.includes('يونيفورم')) return p.type === 'شركات';
+    if (keywords.includes('بوستر') || keywords.includes('أغاني') || keywords.includes('أفلام') || keywords.includes('عربية')) return p.type === 'بوستر';
+    if (keywords.includes('ستيكر')) return p.type === 'ستيكر';
+    if (keywords.includes('أكسسورات')) return p.type === 'ستيكر' || p.type === 'بوستر';
+    if (keywords.includes('عروض')) return p.price <= 12;
+    return true;
+  });
+  if (!filtered.length) filtered = allProducts.slice(0, 9);
+
+  grid.innerHTML = filtered.map(p => `
+    <div class="product-card" onclick="goPage('page-detail','${p.name}','${p.type}','${p.price}')">
+      <div class="product-img">
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        ${p.tag ? `<span class="product-tag ${p.tagClass}">${p.tag}</span>` : ''}
+      </div>
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        <div class="product-bottom">
+          <div class="product-price">${p.price} JD</div>
+          <div class="add-cart-btn" onclick="addToCart(event)"><i class="ti ti-plus" aria-hidden="true"></i></div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function addToCart(e) {
+  e.stopPropagation();
+  showNotif('✓ تمت الإضافة للسلة!');
+}
+function addToCart2() {
+  showNotif('✓ تمت الإضافة للسلة!');
+}
+
+function selectColor(el) {
+  el.closest('.color-options').querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function switchImg(thumb, src) {
+  document.getElementById('detail-main-img').src = src;
+  document.querySelectorAll('.detail-thumb').forEach(t => t.classList.remove('active'));
+  thumb.classList.add('active');
+}
+
+function changeQty(btn, delta) {
+  const numEl = btn.parentElement.querySelector('.qty-num');
+  let n = parseInt(numEl.textContent) + delta;
+  if (n < 1) n = 1;
+  numEl.textContent = n;
+}
+
+function placeOrder() {
+  showNotif('🎉 تم تأكيد طلبك! شكراً لك');
+  setTimeout(() => goHome(), 2500);
+}
+
+// Back button
+window.addEventListener('popstate', () => {
+  if (pageHistory.length) {
+    const prev = pageHistory.pop();
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(prev).classList.add('active');
+    window.scrollTo(0,0);
+  }
+});
+</script>
+</body>
+</html>
